@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image, ImageOps
 import numpy as np
+from pathlib import Path
 
 st.set_page_config(layout="wide", page_title="MY DIP")
 st.write("## Homework 4 백태희")
@@ -27,4 +28,5 @@ my_upload = st.sidebar.file_uploader("Upload", type=["png","jpg","jpeg"])
 if my_upload is not None:
     process_image(upload=my_upload)
 else:
-    process_image("./myphoto.jpg")
+    image_path = Path(__file__).resolve().parent / "myphoto.jpg"
+    process_image(str(image_path))
